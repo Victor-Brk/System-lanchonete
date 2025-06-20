@@ -1,0 +1,23 @@
+{% extends "admin.html" %}
+{% block conteudo %}
+  <div class="container mt-4">
+    <h2>Produtos</h2>
+    <a href="{{ url_for('novo_produto') }}" class="btn btn-success mb-3">Novo Produto</a>
+    <table class="table table-dark table-striped">
+      <thead><tr><th>ID</th><th>Nome</th><th>Preço</th><th>Ações</th></tr></thead>
+      <tbody>
+        {% for p in produtos %}
+        <tr>
+          <td>{{ p.id }}</td>
+          <td>{{ p.nome }}</td>
+          <td>R$ {{ '%.2f'|format(p.preco) }}</td>
+          <td>
+            <a href="/admin/produtos/editar/{{ p.id }}" class="btn btn-warning btn-sm">Editar</a>
+            <a href="/admin/produtos/deletar/{{ p.id }}" class="btn btn-danger btn-sm">Excluir</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

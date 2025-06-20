@@ -1,0 +1,11 @@
+{% extends "admin.html" %}
+{% block conteudo %}
+  <div class="container mt-4">
+    <h2>{{ acao }} Produto</h2>
+    <form method="POST">
+      <div class="mb-3"><label>Nome</label><input type="text" name="nome" class="form-control" value="{{ produto.nome if produto else '' }}" required></div>
+      <div class="mb-3"><label>Preço</label><input type="number" step="0.01" name="preco" class="form-control" value="{{ produto.preco if produto else '' }}" required></div>
+      <button type="submit" class="btn btn-primary">{{ acao }}</button>
+    </form>
+  </div>
+{% endblock %}
